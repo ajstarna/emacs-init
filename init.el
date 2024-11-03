@@ -45,6 +45,11 @@ displayed anywhere else."
 (load-theme 'material t))
 
 ;; Rust
+;; 
+;; ******** Prereq: make sure to install rust-analyzer **********
+;; https://rust-analyzer.github.io/manual.html#installation
+;; 1) rustup component add rust-src
+;; 2) rustup component add rust-analyzer
 (use-package rustic)
 
 (setq-default indent-tabs-mode t)
@@ -74,6 +79,28 @@ displayed anywhere else."
 
 ;; setting this high since our node codebase has ~1100 files and asks me every time
 (setq-default lsp-file-watch-threshold 3000)
+
+;; company and yas-snippet needed for auto complete
+(use-package company
+  :ensure
+  :custom
+  (company-idle-delay 0.5) ;; how long to wait until popup
+  ;; (company-begin-commands nil) ;; uncomment to disable popup
+  :bind
+  (:map company-active-map
+              ("C-n". company-select-next)
+              ("C-p". company-select-previous)
+              ("M-<". company-select-first)
+              ("M->". company-select-last)))
+
+
+(use-package yasnippet
+  :ensure
+  :config
+  (yas-reload-all)
+  (add-hook 'prog-mode-hook 'yas-minor-mode)
+  (add-hook 'text-mode-hook 'yas-minor-mode))
+
 
 (use-package counsel)
 

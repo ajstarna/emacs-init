@@ -102,6 +102,14 @@ displayed anywhere else."
 ;; setting this high since our node codebase has ~1100 files and asks me every time
 (setq-default lsp-file-watch-threshold 3000)
 
+;; https://github.com/emacs-lsp/lsp-pyright                                                                                               
+(use-package lsp-pyright                                                                                                                  
+  :ensure t                                                                                                                               
+  :custom (lsp-pyright-langserver-command "pyright")                                                                                      
+  :hook (python-mode . (lambda ()                                                                                                         
+                          (require 'lsp-pyright)                                                                                          
+                          (lsp))))  ; or lsp-deferred 
+
 ;; company and yas-snippet needed for auto complete
 (use-package company
   :ensure

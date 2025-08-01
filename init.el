@@ -75,8 +75,6 @@ displayed anywhere else."
 
 
 (setq-default indent-tabs-mode t)
-;; width of 8 in our code base
-(setq-default rust-indent-offset 8)
 
 (use-package lsp-mode
   :commands lsp

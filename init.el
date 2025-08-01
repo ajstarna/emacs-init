@@ -23,6 +23,8 @@
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
 
+(setq confirm-kill-emacs 'y-or-n-p)  
+
 (add-hook 'prog-mode-hook 'display-line-numbers-mode) ;; line numbers
 (setq column-number-mode t) ;; column numbers
 (add-hook 'write-file-hooks 'delete-trailing-whitespace)
